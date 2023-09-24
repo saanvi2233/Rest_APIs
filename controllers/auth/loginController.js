@@ -1,6 +1,6 @@
 import Joi from "joi";
 import CustomErrorHandler from "../../sevices/CustomErrorHandler.js";
-import bcrypt from "bcrypt";
+//import bcrypt from "bcrypt";
 import { User, RefreshToken } from "../../models/index.js";
 import JwtService from "../../sevices/JwtService.js";
 import { REFRESH_SECRET } from "../../config/index.js";
@@ -27,8 +27,9 @@ const loginController = {
         return next(CustomErrorHandler.wrongCredential());
       }
       // comapre the password
-      const match = await bcrypt.compare(password, user.password);
-      if (!match) {
+      console.log(password,user.password)
+      //const match = await bcrypt.compare(password, user.password);
+      if (password !== user.password) {
         return next(CustomErrorHandler.wrongCredential());
       }
 

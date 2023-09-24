@@ -1,7 +1,7 @@
 import Joi from "joi";
 import { User,RefreshToken } from "../../models/index.js";
 import CustomErrorHandler from "../../sevices/CustomErrorHandler.js";
-import bcrypt from "bcrypt";
+//import bcrypt from "bcrypt";
 import {REFRESH_SECRET} from '../../config/index.js';
 import JwtService from "../../sevices/JwtService.js";
 const registerController = {
@@ -46,8 +46,8 @@ const registerController = {
 
     const { name, email, password } = req.body;
     //Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
+    //const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = password;
     //preapare the model
 
     const user = new User({
